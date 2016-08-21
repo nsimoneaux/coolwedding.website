@@ -17,13 +17,19 @@
 
   var isUnlocked = false;
   
+  if('webkitAudioContext' in window) {
+    var myAudioContext = new webkitAudioContext();
+  }
+
   function unlock() {
-      
+   
+
+
   // create empty buffer and play it
-  var buffer = AudioContext.createBuffer(1, 1, 22050);
-  var source = AudioContext.createBufferSource();
+  var buffer = myAudioContext.createBuffer(1, 1, 22050);
+  var source = myAudioContext.createBufferSource();
   source.buffer = buffer;
-  source.connect(AudioContext.destination);
+  source.connect(myAudioContext.destination);
   source.noteOn(0);
 
   // by checking the play state after some time, we know if we're really unlocked
