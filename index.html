@@ -10,10 +10,12 @@
   function myFunction(){
   
   if (song_started == false){
-  window.addEventListener("touchend", myFunction);
+  window.addEventListener("touchend", myFunction(touchEvent));
+      if (touchEvent == true){
+      } 
       MIDIjs.stop();
       setTimeout(function(){
-          MIDIjs.play('./sleepwalk.mid');
+          MIDIjs.play('./breezin.mid');
           }
       , 2000);
       song_started = true;
