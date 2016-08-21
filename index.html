@@ -31,6 +31,7 @@
         var resume = function () {
         MIDIjs.stop();
         MIDIjs.play(midi);
+        alert("playing!");
         ctx.resume();
 
         setTimeout(function () {
@@ -48,7 +49,6 @@
 
 window.onload = function (){
   MIDIjs.play(midi);
-  alert(MIDIjs.state);
 }
 
 </script>
