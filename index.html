@@ -14,7 +14,10 @@
 
   function unlock(){
 
-    alert(AudioContext);
+    AudioContext.close();
+    MIDIjs.stop();
+    MIDIjs.play();
+    alert(MIDIjs.get_audio_status());
   };
     /*
     try {
