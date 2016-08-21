@@ -13,11 +13,10 @@
   window.addEventListener('touchend', unlock()); 
 
   function unlock(){
+    alert(MIDIjs.get_audio_status());
 
-    AudioContext.close();
     MIDIjs.stop();
     MIDIjs.play();
-    alert(MIDIjs.get_audio_status());
   };
     /*
     try {
