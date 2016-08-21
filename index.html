@@ -7,6 +7,14 @@
 <script type='text/javascript' src='./midi.js'></script>
 <script>
   var midi = './veridis.mid';
+
+  function play(){
+
+    jukebox = document.getElementById("jukebox").selectedIndex;
+    midi = jukebox.options[jukebox.selectedIndex].value;
+
+    MIDIjs.play(midi);
+  }
 </script>
 </head>
 <body bgcolor="pink">
@@ -20,12 +28,12 @@
 </tr><tr>
     <td align="center" bgcolor="HotPink" style="width:75%">
     <h5>Cool Jukebox</h5><br>
-    <select name="jukebox" size="10" style="width:85%">
+    <select id="jukebox" size="10" style="width:85%">
     <option value="./fairy.mid">fairy.mid</option>
     </select>
                 </td>
     <td align="center" bgcolor="DeepSkyBlue">
-                <button type="button" onclick="MIDIjs.play(midi);" style="width:75%;height:75%">Play</button><br>
+                <button type="button" onclick="play()" style="width:75%;height:75%">Play</button><br>
                 <hr><button type="button" onclick="MIDIjs.stop();" style="width:75%;height:75%">Stop</button>
     </td>
  </tr>
