@@ -11,7 +11,7 @@
   function play(){
 
     if(document.getElementById("jukebox")){
-      jukebox = document.getElementById("jukebox").selectedIndex;
+      jukebox = document.getElementById("jukebox");
       midi = jukebox.options[jukebox.selectedIndex].value;
     }
     MIDIjs.play(midi);
