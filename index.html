@@ -20,8 +20,8 @@
   function unlock() {
       
   // create empty buffer and play it
-  var buffer = myContext.createBuffer(1, 1, 22050);
-  var source = myContext.createBufferSource();
+  var buffer = AudioContext.createBuffer(1, 1, 22050);
+  var source = AudioContext.createBufferSource();
   source.buffer = buffer;
   source.connect(myContext.destination);
   source.noteOn(0);
