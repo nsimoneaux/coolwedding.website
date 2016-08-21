@@ -6,50 +6,41 @@
 <title>"Cool Wedding 2017"</title>
 <script type='text/javascript' src='./midi.js'></script>
 <script>
-  
   var midi = './breezin.mid';
 
-  window.addEventListener("touchend", unlock());
-  window.addEventListener("touchend", ifUnlocked());
+  var ctx = null, usingWebAudio = true;
+
+  try {
+    if (typeof AudioContext !== 'undefined') {
+      ctx = new AudioContext();
+    } else if (typeof webkitAudioContext !== 'undefined') {
+      ctx = new webkitAudioContext();
+    } else {
+      usingWebAudio = false;
+    }
+  } catch(e) {
+    usingWebAudio = false;
+  }
+
+  // context state at this time is `undefined` in iOS8 Safari
+  if (usingWebAudio && ctx.state === 'suspended') {
+    var resume = function () {
+      ctx.resume();
+
+      setTimeout(function () {
+        if (ctx.state === 'running') {
+          document.body.removeEventListener('touchend', resume, false);
+          MIDIjs.play(midi);
+        }
+      }, 0);
+    };
+
+    document.body.addEventListener('touchend', resume, false);
+  }
+
   window.onload = function (){
     MIDIjs.play(midi);
   }
-
-  var isUnlocked = false;
-  
-  if('webkitAudioContext' in window) {
-    alert("Webkit Audio Context!");
-    var myAudioContext = new webkitAudioContext();
-  }
-
-  function unlock() {
-   
-
-      if(myAudioContext == true){
-      // create empty buffer and play it
-      var buffer = myAudioContext.createBuffer(1, 1, 22050);
-      var source = myAudioContext.createBufferSource();
-      source.buffer = buffer;
-      source.connect(myAudioContext.destination);
-      source.noteOn(0);
-
-      // by checking the play state after some time, we know if we're really unlocked
-      setTimeout(function() {
-         if((source.playbackState === source.PLAYING_STATE || source.playbackState === source.FINISHED_STATE)) {
-          isUnlocked = true;
-        }
-      }, 0);
-  }
-}
-    
-function ifUnlocked(){
-  if(isUnlocked == true){
-    alert("unlocked!");
-    MIDIjs.play(midi);
-  }
-
-}
-
 
 </script>
 </head>
