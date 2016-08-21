@@ -14,9 +14,7 @@
 
   function unlock(){
     alert(MIDIjs.get_audio_status());
-
-    MIDIjs.stop();
-    MIDIjs.play();
+    alert(MIDIjs.message_callback);
   };
     /*
     try {
