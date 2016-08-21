@@ -13,7 +13,6 @@
   window.addEventListener('touchend', unlock()); 
 
   function unlock(){
-    if (running == false){
     try {
       if (typeof AudioContext !== 'undefined') {
         ctx = new AudioContext();
@@ -45,7 +44,6 @@
       document.body.addEventListener('touchend', resume, false);
     }
   }
-}
 
 window.onload = function (){
   MIDIjs.play(midi);
