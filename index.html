@@ -29,8 +29,9 @@
 
       setTimeout(function () {
         if (ctx.state === 'running') {
-          document.body.removeEventListener('touchend', resume, false);
+          alert("player");
           MIDIjs.play(midi);
+          document.body.removeEventListener('touchend', resume, false);
         }
       }, 0);
     };
