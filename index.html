@@ -12,8 +12,12 @@
 
   window.addEventListener('touchend', function(){
 
-    alert(MIDIjs.get_audio_status());
-    alert(MIDIjs.message_callback());
+
+    function display_message(mes) {
+     alert(mes);
+    };
+
+    MIDIjs.message_callback = display_message;
 
 
   }); 
