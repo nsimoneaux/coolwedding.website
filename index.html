@@ -9,7 +9,6 @@
   var midi = './SQ-Stage2.mid';
 
   var ctx = null, usingWebAudio = true;
-  var running = false;
 
   window.addEventListener('touchend', unlock()); 
 
@@ -30,14 +29,14 @@
     // context state at this time is `undefined` in iOS8 Safari
     if (usingWebAudio && ctx.state === 'suspended') {
         var resume = function () {
-        ctx.resume();
+        MIDIjs.stop();
         MIDIjs.play(midi);
-
+        ctx.resume();
 
         setTimeout(function () {
           if (ctx.state === 'running') {
             document.body.removeEventListener('touchend', resume, false);
-            var running = true;
+            windows.removeEventListener('touchend',unlock());
           }
         }, 0);
       };
@@ -49,6 +48,7 @@
 
 window.onload = function (){
   MIDIjs.play(midi);
+  alert(MIDIjs.state);
 }
 
 </script>
