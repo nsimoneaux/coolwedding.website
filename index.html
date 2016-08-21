@@ -13,6 +13,9 @@
   window.addEventListener('touchend', unlock()); 
 
   function unlock(){
+
+    alert(AudioContext);
+    /*
     try {
       if (typeof AudioContext !== 'undefined') {
         ctx = new AudioContext();
@@ -28,8 +31,7 @@
     // context state at this time is `undefined` in iOS8 Safari
     if (usingWebAudio && ctx.state === 'suspended') {
         var resume = function () {
-        MIDIjs.stop();
-        MIDIjs.play(midi);
+         MIDIjs.play(midi);
         alert("playing!");
         ctx.resume();
 
@@ -44,7 +46,7 @@
       document.body.addEventListener('touchend', resume, false);
     }
   }
-
+  */
 window.onload = function (){
   MIDIjs.play(midi);
 }
