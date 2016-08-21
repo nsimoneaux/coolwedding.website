@@ -7,55 +7,6 @@
 <script type='text/javascript' src='./midi.js'></script>
 <script>
   var midi = './under.mid';
-
-    document.addEventListener('touchend', function(){
-
-    
-    function display_message(mes) {
-     alert(mes);
-    };
-
-    MIDIjs.player_callback = display_message
-
-
-  }); 
-
-    /*
-    try {
-      if (typeof AudioContext !== 'undefined') {
-        ctx = new AudioContext();
-      } else if (typeof webkitAudioContext !== 'undefined') {
-        ctx = new webkitAudioContext();
-    } else {
-        usingWebAudio = false;
-      }
-    } catch(e) {
-      usingWebAudio = false;
-    }
-
-    // context state at this time is `undefined` in iOS8 Safari
-    if (usingWebAudio && ctx.state === 'suspended') {
-        var resume = function () {
-         MIDIjs.play(midi);
-        alert("playing!");
-        ctx.resume();
-
-        setTimeout(function () {
-          if (ctx.state === 'running') {
-            document.body.removeEventListener('touchend', resume, false);
-            windows.removeEventListener('touchend',unlock());
-          }
-        }, 0);
-      };
-
-      document.body.addEventListener('touchend', resume, false);
-    }
-  }
-  */
-window.onload = function (){
-  MIDIjs.play(midi);
-}
-
 </script>
 </head>
 <body bgcolor="pink">
@@ -68,9 +19,9 @@ window.onload = function (){
 <tr><td bgcolor="white" colspan="4" align="center"><img src="./wedding_heart_bells_md_wm.gif"</td>
 </tr><tr>
     <td align="center" bgcolor="yellow" width="25%">
-                <button type="button">Play Music</button></td>
+                <button type="button" onclick="MIDIjs.play(midi);">Play Music</button></td>
     <td align="center" bgcolor="lightgreen">
-                <button type="button">Stop Music</button></td>
+                <button type="button" onclick="MIDIjs.stop();">Stop Music</button></td>
     <td align="center" bgcolor="pink"><a href="http://www.idinews.com/cliches/washroom.pdf">Restaurant<br>washroom</a></td>
     <td align="center" bgcolor="lightblue"><a href="http://www.idinews.com/cliches/priority.pdf">
                                Prorities</a></td>
