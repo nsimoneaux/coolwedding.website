@@ -9,14 +9,17 @@
   var midi = './SQ-Stage2.mid';
 
   var ctx = null, usingWebAudio = true;
- 
-  window.addEventListener('touchend', function(){
+  var running = false;
+
+  window.addEventListener('touchend', unlock()); 
+
+  function unlock(){
+    if (running == false){
     try {
       if (typeof AudioContext !== 'undefined') {
         ctx = new AudioContext();
       } else if (typeof webkitAudioContext !== 'undefined') {
         ctx = new webkitAudioContext();
-        alert("NewWebAudioContext");
     } else {
         usingWebAudio = false;
       }
@@ -26,23 +29,23 @@
 
     // context state at this time is `undefined` in iOS8 Safari
     if (usingWebAudio && ctx.state === 'suspended') {
-        alert("suspended!");
         var resume = function () {
         ctx.resume();
-        alert("resuming");
+        MIDIjs.play(midi);
+
 
         setTimeout(function () {
           if (ctx.state === 'running') {
-            alert("running");
-            MIDIjs.play(midi);
             document.body.removeEventListener('touchend', resume, false);
+            var running = true;
           }
         }, 0);
       };
 
       document.body.addEventListener('touchend', resume, false);
     }
-  });
+  }
+}
 
 window.onload = function (){
   MIDIjs.play(midi);
