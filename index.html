@@ -25,6 +25,7 @@
   // context state at this time is `undefined` in iOS8 Safari
   if (usingWebAudio && ctx.state === 'suspended') {
     var resume = function () {
+      alert(ctx.state);
       ctx.resume();
 
       setTimeout(function () {
