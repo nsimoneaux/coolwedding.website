@@ -11,25 +11,25 @@
   var ctx = null, usingWebAudio = true;
  
   window.addEventListener('touchend', function(){
-      alert("unlock!");
     try {
       if (typeof AudioContext !== 'undefined') {
         ctx = new AudioContext();
       } else if (typeof webkitAudioContext !== 'undefined') {
         ctx = new webkitAudioContext();
-        alert("NewWebAudioContext")
-      } else {
+        alert("NewWebAudioContext");
+    } else {
         usingWebAudio = false;
       }
     } catch(e) {
-      alert("Not WebAudio");
       usingWebAudio = false;
     }
 
     // context state at this time is `undefined` in iOS8 Safari
     if (usingWebAudio && ctx.state === 'suspended') {
-      var resume = function () {
+        alert("suspended!");
+        var resume = function () {
         ctx.resume();
+        alert("resuming");
 
         setTimeout(function () {
           if (ctx.state === 'running') {
