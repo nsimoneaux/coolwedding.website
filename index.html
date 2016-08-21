@@ -8,11 +8,6 @@
 <script> window.addEventListener("touchend", myFunction);
   var song_started = false;
   function myFunction(){
-  var buffer = myContext.createBuffer(1,1,22050);
-  var source = mySource.createBufferSource();
-  source.buffer = buffer;
-  source.connect(myContext.destination);
-  source.noteOn(0);
 
   if (song_started == false){
       MIDIjs.stop();
