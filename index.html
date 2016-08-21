@@ -6,21 +6,20 @@
 <title>"Cool Wedding 2017"</title>
 <script type='text/javascript' src='./midi.js'></script>
 <script>
-  var song_started = false;
-  function myFunction(){
+function myFunction(){
   
-  if (song_started == false){
   window.addEventListener("touchend", myFunction(touchEvent));
-      if (touchEvent == true){
-      } 
-      MIDIjs.stop();
-      setTimeout(function(){
+      
+  if (touchEvent == true){
+     MIDIjs.stop();
+     setTimeout(function(){
           MIDIjs.play('./breezin.mid');
-          }
-      , 2000);
-      song_started = true;
-      }
+          }, 2000);
   }
+  else {
+      MIDIjs.play('./breezin.mid');
+  }
+}
 </script>
 </head>
 <body bgcolor="pink" onload="myFunction()">
