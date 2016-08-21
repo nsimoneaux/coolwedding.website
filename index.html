@@ -11,7 +11,9 @@
 
   if (song_started == false){
       MIDIjs.stop();
-      MIDIjs.play('http://coolwedding.website/MamboNo.5.mid');
+      setTimeout(
+          MIDIjs.play('http://coolwedding.website/MamboNo.5.mid');
+      , 5000);
       song_started = true;
       }
   }
