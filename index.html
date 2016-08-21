@@ -13,6 +13,7 @@
   window.addEventListener('touchend', unlock());
 
   function unlock(){
+    alert("unlock!");
   try {
     if (typeof AudioContext !== 'undefined') {
       ctx = new AudioContext();
