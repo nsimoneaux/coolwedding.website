@@ -6,10 +6,13 @@
 <title>"Cool Wedding 2017"</title>
 <script type='text/javascript' src='./midi.js'></script>
 <script> window.addEventListener("touchend", myFunction);
+  var song_started = false;
   function myFunction(){
-  MIDIjs.play('./MamboNo.5.mid');
-  alert("HIT IT!");
-  alert(MIDIjs.get_audio_status());
+  if (song_started == false){
+      MIDIjs.stop();
+      MIDIjs.play('./MamboNo.5.mid');
+      song_started = true;
+      }
   }
 </script>
 </head>
