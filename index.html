@@ -14,13 +14,11 @@
   window.onload = function (){
     MIDIjs.play(midi);
   }
+
   var isUnlocked = false;
   
   function unlock() {
       
-  if(isIOS || this.unlocked)
-    return;
-
   // create empty buffer and play it
   var buffer = myContext.createBuffer(1, 1, 22050);
   var source = myContext.createBufferSource();
@@ -47,7 +45,7 @@ function ifUnlocked(){
 
 </script>
 </head>
-<body bgcolor="pink" onload="myFunction()">
+<body bgcolor="pink">
 <h3><i>Thanks for visiting!</i></h3>
 <h1 align="center">Michelle and Nick are getting married!</h1>
 <table border="" cellpadding="8" width="80%" align="center" bordercolor="black">
