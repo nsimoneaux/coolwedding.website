@@ -11,8 +11,10 @@
 
   if (song_started == false){
       MIDIjs.stop();
-      setTimeout(
+      setTimeout(function(){
           MIDIjs.play('./MamboNo.5.mid');
+          alert("playing!");
+          };
       , 5000);
       song_started = true;
       }
