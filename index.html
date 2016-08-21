@@ -10,12 +10,14 @@
 
   var ctx = null, usingWebAudio = true;
 
-  window.addEventListener('touchend', unlock()); 
+  window.addEventListener('touchend', function(){
 
-  function unlock(){
     alert(MIDIjs.get_audio_status());
-    alert(MIDIjs.message_callback);
-  };
+    alert(MIDIjs.message_callback());
+
+
+  }); 
+
     /*
     try {
       if (typeof AudioContext !== 'undefined') {
